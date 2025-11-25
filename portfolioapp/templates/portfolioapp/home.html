@@ -1,0 +1,41 @@
+{% extends 'portfolioapp/base.html' %}
+{% block content %}
+<style>
+  .profile-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.6);
+  }
+
+  .intro-section {
+    margin-top: 80px;
+  }
+</style>
+
+<!-- Profile Section -->
+<div class="text-center">
+  {% if profile %}
+    {% if profile.image %}
+      <img src="{{ profile.image.url }}" class="profile-img mb-3" alt="{{ profile.name }}">
+    {% endif %}
+    <h1 class="display-4">{{ profile.name }}</h1>
+    <p class="lead">{{ profile.bio }}</p>
+  {% else %}
+    <p>No profile found. Please add one in the admin panel.</p>
+  {% endif %}
+</div>
+
+<!-- Intro Section -->
+<div class="text-center intro-section">
+  <h1 class="display-5">Need a standout website or final year project?</h1>
+  <p class="lead">I craft clean, functional web solutions that help you shine whether you're launching a brand or graduating with impact.</p>
+</div>
+{% endblock %}

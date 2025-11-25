@@ -1,0 +1,50 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>{% block title %}Goddy's Portfolio | Web Developer{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Welcome to Goddy's portfolio. I build clean, functional web solutions for brands and students. Explore my projects.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}web developer, django, python, portfolio, final year projects, web applications{% endblock %}">
+    <meta name="author" content="Goddy">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/quartz/bootstrap.min.css" rel="stylesheet">
+    {% bootstrap_javascript %}
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNZG2219L6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DNZG2219L6');
+    </script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-dark bg-dark mb-4">
+    
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="{% url 'home' %}">Goddy's Portfolio</a>
+        <div>
+            <a class="btn btn-outline-light me-2" href="{% url 'projects' %}">Projects</a>
+            <a class="btn btn-outline-light me-2" href="{% url 'about' %}">About</a>
+            <a class="btn btn-outline-light" href="{% url 'contact' %}">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container flex-grow-1">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="py-4 bg-dark mt-auto">
+    <div class="container text-center">
+        <p class="m-0 text-light">&copy; {% now "Y" %} Goddy's Portfolio. All Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
